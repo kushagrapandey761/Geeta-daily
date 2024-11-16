@@ -3,7 +3,7 @@ import LandingPageImg from "@/assets/images/LandingPagephoto.jpg";
 export default function Home() {
   return (
     <>
-      <div className="flex flex-row justify-center mt-[150px] space-x-20">
+      <div className="flex flex-row justify-center mt-[120px] space-x-20">
         <Image
           src={LandingPageImg}
           alt="Lord Krishna preaching Bhagwad Gita to Arjuna"
