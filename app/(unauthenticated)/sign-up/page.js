@@ -1,4 +1,5 @@
 "use client";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { z } from "zod";
 const signupSchema = z.object({
@@ -10,6 +11,7 @@ export default function SignUpPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState([]);
+  const router = useRouter();
   async function handleSubmit(e) {
     e.preventDefault();
     const formData = {
@@ -36,19 +38,11 @@ export default function SignUpPage() {
       setError([data.error])
     }
     localStorage.setItem("token",data.token);
+    router.push("/shloka");
   }
   return (
     <>
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossOrigin="true"
-      />
-      <link
-        href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Arima:wght@100..700&family=Caveat&family=Edu+VIC+WA+NT+Beginner:wght@400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Libre+Baskerville&family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&display=swap"
-        rel="stylesheet"
-      ></link>
+      
       <div className="flex flex-row justify-center items-center mt-[100px]">
         <div className="flex flex-col space-y-6 items-center justify-center bg-[#E7FBB4] w-[500px] h-[550px]">
           <h1 className="font-arima font-bold text-xl">Create a new account</h1>
@@ -77,7 +71,7 @@ export default function SignUpPage() {
                 onChange={(e) => setEmail(e.target.value)} // Update state
               />
               <label className="font-arima font-semibold" htmlFor="password">
-                Password
+                Create your password
               </label>
               <input
                 className="bg-white w-[300px] h-[30px] p-4 rounded-xl font-arima text-sm"
