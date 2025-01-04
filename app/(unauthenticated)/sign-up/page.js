@@ -31,20 +31,20 @@ export default function SignUpPage() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ username,email, password }),
+      body: JSON.stringify({ username, email, password }),
     });
     const data = await response.json();
-    if(data.error){
-      setError([data.error])
+    if (data.error) {
+      setError([data.error]);
+    } else {
+      localStorage.setItem("token", data.token);
+      router.push("/shloka");
     }
-    localStorage.setItem("token",data.token);
-    router.push("/shloka");
   }
   return (
     <>
-      
       <div className="flex flex-row justify-center items-center mt-[100px]">
-        <div className="flex flex-col space-y-6 items-center justify-center bg-[#E7FBB4] w-[500px] h-[550px]">
+        <div className="flex flex-col space-y-6 items-center justify-center bg-[#E7FBB4] lg:w-[500px] lg:h-[550px] w-[350px] h-[550px]">
           <h1 className="font-arima font-bold text-xl">Create a new account</h1>
           <form onSubmit={handleSubmit}>
             <div className="flex flex-col space-y-6">

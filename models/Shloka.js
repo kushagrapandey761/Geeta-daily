@@ -10,7 +10,6 @@ var ShlokaSchema = new mongoose.Schema({
   EngMeaning: String,
   WordMeaning: String,
 });
-// var Shloka = mongoose.model("Shloka", ShlokaSchema);
 for (let model in mongoose.models) delete mongoose.models[model];
 
 export default mongoose.model("Shloka", ShlokaSchema);

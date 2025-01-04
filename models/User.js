@@ -8,7 +8,6 @@ var UserSchema = new mongoose.Schema({
   lastAccessed: Date,
 });
 
-// var User = mongoose.model("User", UserSchema);
 for (let model in mongoose.models) delete mongoose.models[model];
 
 export default mongoose.model("User", UserSchema);

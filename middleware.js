@@ -1,18 +1,16 @@
 import { jwtVerify } from "jose";
 import { NextResponse } from "next/server";
-import { JWT_SECRET } from "./app/api/login/route";
-import { TextEncoder } from "util";
+
 
 export default async function middleware(req) {
   const token = req.headers.get("authorization")?.split(" ")[1];
-
 
   if (!token) {
     return NextResponse.redirect(new URL("/log-in", req.url));
   }
 
   try {
-    const secretKey = Buffer.from(JWT_SECRET, "base64");
+    const secretKey = Buffer.from(process.env.JWT_SECRET, "base64");
 
     const payload = await jwtVerify(token, secretKey);
     const clonedReq = req.clone();
@@ -25,6 +23,6 @@ export default async function middleware(req) {
 }
 
 export const config = {
-  matcher: ["/api/shloka/:path*"],
+  matcher: ["/api/shloka/:path*", "/api/shlokaID/:path*"],
   runtime: "nodejs",
 };

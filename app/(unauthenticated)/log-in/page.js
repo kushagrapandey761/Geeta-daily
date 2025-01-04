@@ -37,18 +37,19 @@ export default function LoginPage() {
     const data = await response.json();
     if(data.token){
       localStorage.setItem("token", data.token);
+      router.push("/shloka");
     }
     else{
       setError([data.error])
     }
-    router.push("/shloka")
+    
   }
 
   return (
     <>
       
       <div className="flex flex-row justify-center items-center mt-[100px]">
-        <div className="flex flex-col space-y-10 items-center justify-center bg-[#E7FBB4] w-[500px] h-[550px]">
+        <div className="flex flex-col space-y-10 items-center justify-center bg-[#E7FBB4] lg:w-[500px] lg:h-[550px] w-[350px] h-[400px]">
           <h1 className="font-arima font-bold text-xl">
             Login to your account
           </h1>
@@ -63,7 +64,7 @@ export default function LoginPage() {
                 name="email"
                 placeholder="Enter your email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)} // Update state
+                onChange={(e) => setEmail(e.target.value)}
               />
               <label className="font-arima font-semibold" htmlFor="password">
                 Password
@@ -74,7 +75,7 @@ export default function LoginPage() {
                 name="password"
                 placeholder="Enter your password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)} // Update state
+                onChange={(e) => setPassword(e.target.value)}
               />
               
                 {error.length > 0 && (
