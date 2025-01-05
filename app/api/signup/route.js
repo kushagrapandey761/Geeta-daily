@@ -4,7 +4,6 @@ import { SignJWT } from "jose";
 
 import User from "@/models/User";
 import { connectDb } from "@/lib/db";
-const saltRounds = 10;
 
 export async function POST(req) {
   connectDb();
@@ -15,7 +14,7 @@ export async function POST(req) {
     return NextResponse.json({ error: "User exists with the provided email" });
   } else {
     
-    const hashedPassword = await bcrypt.hash(password, saltRounds);
+    const hashedPassword = await bcrypt.hash(password, Number(process.env.SALT_ROUNDS));
     const newUser = new User({
       username,
       email,

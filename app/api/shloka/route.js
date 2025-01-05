@@ -32,8 +32,8 @@ export async function GET(req) {
   }
   if(user.shlokaIdx>701){
     user.shlokaIdx = 701;
-    await user.save();
   }
+  await user.save();
   shlokas = await Shloka.find({ ID: { $lte: user.shlokaIdx } });
   return NextResponse.json({ shlokas });
 }

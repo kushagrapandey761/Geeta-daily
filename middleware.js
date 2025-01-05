@@ -1,10 +1,8 @@
 import { jwtVerify } from "jose";
 import { NextResponse } from "next/server";
 
-
 export default async function middleware(req) {
   const token = req.headers.get("authorization")?.split(" ")[1];
-
   if (!token) {
     return NextResponse.redirect(new URL("/log-in", req.url));
   }
@@ -23,6 +21,12 @@ export default async function middleware(req) {
 }
 
 export const config = {
-  matcher: ["/api/shloka/:path*", "/api/shlokaID/:path*"],
+  matcher: [
+    "/api/shloka/:path*",
+    "/api/shlokaID/:path*",
+    "/api/getUsername/:path*",
+    "/api/updateUsername/:path*",
+    "/api/updatePassword/:path*",
+  ],
   runtime: "nodejs",
 };
