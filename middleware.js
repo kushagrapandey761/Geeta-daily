@@ -27,6 +27,7 @@ export const config = {
     "/api/getUsername/:path*",
     "/api/updateUsername/:path*",
     "/api/updatePassword/:path*",
+    "/api/getUsername/:path*"
   ],
   runtime: "nodejs",
 };

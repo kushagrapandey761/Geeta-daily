@@ -2,10 +2,13 @@
 import Password from "@/components/Password";
 import Username from "@/components/Username";
 import { decodeJwt } from "jose";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+
 
 export default function Profile() {
   const [username, setUsername] = useState("");
+  const router = useRouter();
   useEffect(() => {
     async function decode() {
       const token = localStorage.getItem("token");
@@ -23,6 +26,8 @@ export default function Profile() {
         });
         const data = await response.json();
         setUsername(data.username);
+      }else{
+        router.push("/log-in");
       }
     }
     decode();

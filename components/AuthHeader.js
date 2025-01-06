@@ -43,11 +43,11 @@ export default function AuthHeader() {
   return (
     <>
       <header className="border-2 h-[90px] bg-[#FF8000] flex justify-center items-center">
-        <div className="w-[80%]">
+        <div className=" w-[90%] lg:w-[80%]">
           <nav className="flex items-center justify-between h-full px-10">
             <Link
               href="/shloka"
-              className="text-lg font-arima font-semibold text-black"
+              className="font-arima font-semibold text-black text-sm lg:text-xl"
             >
               Daily Shlokas
             </Link>
@@ -59,13 +59,13 @@ export default function AuthHeader() {
                 }}
                 className="hover:cursor-pointer"
               >
-                <div className="w-[50px] h-[50px] border-2 border-white rounded-full flex items-center justify-center">
-                  <p className="font-semibold text-black">{firstLetter}</p>
+                <div className="w-[40px] h-[40px] lg:w-[50px] lg:h-[50px] border-2 border-white rounded-full flex items-center justify-center">
+                  <p className="font-semibold text-black text-sm lg:text-lg">{firstLetter}</p>
                 </div>
               </div>
               {isDropVis && (
                 <div
-                  ref={dropdownRef} // Attach the reference to the dropdown
+                  ref={dropdownRef}
                   className="absolute right-0 mt-2 w-[120px] bg-white p-3 rounded-xl shadow-lg z-10"
                 >
                   <Link href="/profile">
