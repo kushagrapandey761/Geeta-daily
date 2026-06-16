@@ -34,6 +34,6 @@ export async function GET(req) {
     user.shlokaIdx = 701;
   }
   await user.save();
-  shlokas = await Shloka.find({ ID: { $lte: user.shlokaIdx } });
+  shlokas = await Shloka.find({ ID: { $lte: user.shlokaIdx } }).sort({ ID: 1 });
   return NextResponse.json({ shlokas });
 }
